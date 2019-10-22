@@ -49,7 +49,7 @@ if(process.env.NODE_ENV === 'development'){
 
 app.use('/api/auth',authRoute)
 // app.use('/api/favorite',)
-app.use('/',()=>{
+app.use('/',(req,res)=>{
     res.send('WELCOME TO MOVSPOT,WE GIVE YOU A PREVIEW OF YOUR MOVIE')
 })
 const PORT = process.env.PORT || 5000
