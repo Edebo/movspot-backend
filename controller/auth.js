@@ -50,12 +50,14 @@ exports.signin = (req,res)=>{
     }).exec((err,user)=>{
         if(err || !user){
             return res.status(400).json({
+                status:'fail',
                 error:"User with the email doesnt exist.please signin"
             })
         }
 
         if(!user.authenticate(password)){
             return res.status(401).json({
+                status:'fail',
                 error:"Email and password doesnt match"
             })
         }
@@ -64,14 +66,14 @@ exports.signin = (req,res)=>{
         //send token as cookie
         res.cookie('token',token,{expiresIn:'1d'})
 
-        const {_id,username,email} = user
+        const {_id,email} = user
 
         return res.status(200).json({
+            status:'success',
             token,
-            user:{
-                _id,
-                email            
-            }
+             _id,
+            email            
+            
 
         })
     })
