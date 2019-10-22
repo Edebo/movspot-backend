@@ -49,6 +49,9 @@ if(process.env.NODE_ENV === 'development'){
 
 app.use('/api/auth',authRoute)
 // app.use('/api/favorite',)
+app.use('/',()=>{
+    res.send('WELCOME TO MOVSPOT,WE GIVE YOU A PREVIEW OF YOUR MOVIE')
+})
 const PORT = process.env.PORT || 5000
 app.listen(PORT,()=>{
     console.log('server started successufully')
